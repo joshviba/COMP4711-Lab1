@@ -11,7 +11,52 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo "Hello....this is weird";
+        include('Student.php');
+        
+        // Creates a new Student array
+        $students = array();
+        
+        // Adds the first student
+        $first = new Student();
+        $first->surname = "Doe";
+        $first->first_name = "John";
+        $first->add_email('home','john@doe.com');
+        $first->add_email('work','jdoe@mcdonalds.com');
+        $first->add_grade(65);
+        $first->add_grade(75);
+        $first->add_grade(55);
+        $students['j123'] = $first;
+        
+        // Adds the second student
+        $second = new Student();
+        $second->surname = "Einstein";
+        $second->first_name = "Albert";
+        $second->add_email('home','albert@braniacs.com');
+        $second->add_email('work1','a_einstein@bcit.ca');
+        $second->add_email('work2','albert@physics.mit.edu');
+        $second->add_grade(95);
+        $second->add_grade(80);
+        $second->add_grade(50);
+        $students['a456'] = $second;
+        
+        //Adds the third student (myself)
+        $third = new Student();
+        $third->surname = "Villegas";
+        $third->first_name = "Sergio Josue";
+        $third->add_email('home','joshviba_7@hotmail.com');
+        $third->add_email('work1','jvillegas4@my.bcit.ca');
+        $third->add_grade(78);
+        $third->add_grade(50);
+        $third->add_grade(95);
+        $students['f854'] = $third;
+        
+        ksort($students); // one of the many sort functions
+
+        foreach($students as $student){
+            echo $student->toString();
+        }
+        
+        
         ?>
     </body>
 </html>
